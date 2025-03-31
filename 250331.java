@@ -36,7 +36,7 @@ class Solution2 {
     public int solution(int[] mats, String[][] park) {
         int maxLen = maxSquareSize(park);
         
-        int largest = 0;
+        int largest = -1;
         for(int len: mats){
             if(len <= maxLen){
                 if(len > largest){
