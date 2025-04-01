@@ -71,3 +71,60 @@ class Solution2 {
         return maxLen;
     }
 }
+
+// 3. [PCCE 기출문제] 9번/ 이웃한 칸 (lv.1)
+/* 각 칸마다 색이 칠해진 2차원 격자 보드판이 있습니다. 그중 한 칸을 골랐을 때, 위, 아래, 왼쪽, 오른쪽 칸 중 같은 색깔로 칠해진 칸의 개수를 구하려고 합니다.
+보드의 각 칸에 칠해진 색깔 이름이 담긴 이차원 문자열 리스트 board와 고른 칸의 위치를 나타내는 두 정수 h, w가 주어질 때 board[h][w]와 이웃한 칸들 중 같은 색으로 칠해져 있는 칸의 개수를 return 하도록 solution 함수를 완성해 주세요.*/ 
+class Solution3 {
+    public int solution(String[][] board, int h, int w) {
+        int n = board.length;
+        int count = 0;
+        String color = board[h][w];
+        
+        int[] dh = {0, 1, -1, 0};
+        int[] dw = {1, 0, 0, -1};
+        
+        for(int i=0; i<4; i++){
+            int h_check = h + dh[i];
+            int w_check = w + dw[i];
+            
+            if(h_check >=0 && h_check < n && w_check >= 0 && w_check < n){
+                if(color.equals(board[h_check][w_check])){
+                    count++;
+                }
+            }
+        }
+        
+        return count;
+    }
+}
+
+// 4. [PCCE 기출문제] 10번/ 데이터분석 (lv.1)
+/* 데이터는 ["코드 번호(code)", "제조일(date)", "최대 수량(maximum)", "현재 수량(remain)"]으로 구성되어 있습니다.
+정렬한 데이터들이 담긴 이차원 정수 리스트 data와 어떤 정보를 기준으로 데이터를 뽑아낼지를 의미하는 문자열 ext, 뽑아낼 정보의 기준값을 나타내는 정수 val_ext, 정보를 정렬할 기준이 되는 문자열 sort_by가 주어집니다.
+data에서 ext 값이 val_ext보다 작은 데이터만 뽑은 후, sort_by에 해당하는 값을 기준으로 오름차순으로 정렬하여 return 하도록 solution 함수를 완성해 주세요. 단, 조건을 만족하는 데이터는 항상 한 개 이상 존재합니다. */
+import java.util.*;
+
+class Solution4 {
+    public int[][] solution(int[][] data, String ext, int val_ext, String sort_by) {
+        List<int[]> answerList = new ArrayList<>();
+        
+        Map<String, Integer> content = new HashMap<>();
+        content.put("code", 0);
+        content.put("date", 1);
+        content.put("maximum", 2);
+        content.put("remain", 3);
+        
+        for(int i=0; i<data.length; i++){
+            if(data[i][content.get(ext)] < val_ext){
+                answerList.add(data[i]);
+            }
+        }
+        
+        int[][] answer = new int[answerList.size()][];
+        answer = answerList.toArray(answer);
+        
+        Arrays.sort(answer, Comparator.comparingInt((int[] o) -> o[content.get(sort_by)]));
+        return answer;
+    }
+}
