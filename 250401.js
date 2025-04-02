@@ -52,11 +52,3 @@ function solution4(quiz){
 
     return answer;
 }
-
-const num = 232443;
-const k = 4;
-console.log(solution5(num, k));
-
-function solution5(num, k){
-    return num.toString().split("");
-}
