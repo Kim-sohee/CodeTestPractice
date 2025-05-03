@@ -67,7 +67,7 @@ function solution4(n,m){
 }
 
 const n1 = 45;
-// console.log(solution5(n1));
+console.log(solution5(n1));
 
 function solution5(n){
     var ternary = "";
