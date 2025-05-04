@@ -4,8 +4,10 @@ const path = require('path');
 const morgan = require("morgan");
 const nunjucks = require('nunjucks');
 
-//Sequelize 모델 import (models/index.js에서 sequelize 객체를 불러옴)
 const { sequelize } = require('./models');
+const indexRouter = require('./routes');
+const usersRouter = require('./routes/users');
+const commentsRouter = require('./routes/comments');
 
 const app = express();   // Express 애플리케이션 생성
 
@@ -34,6 +36,10 @@ app.use(morgan('dev'));    // HTTP 요청 로그를 개발자-friendly 형식으
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/comments', commentsRouter);
 
 // 존재하지 않는 라우터 처리 미들웨어 (404 에러 발생)
 app.use((req, res, next)=>{
