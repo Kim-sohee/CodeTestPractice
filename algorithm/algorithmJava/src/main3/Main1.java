@@ -1,9 +1,7 @@
-package algorithmJava.main3;
+package main3;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class Main1 {
 	public ArrayList<Integer> solution(int n, int[] arr1, int m, int[] arr2) {
