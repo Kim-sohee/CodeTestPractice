@@ -5,11 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.StringTokenizer;
 
 
 public class test {
@@ -389,27 +385,149 @@ public class test {
 //		br.close();
 //	}
 	
-	public static void main(String[] args) throws IOException {
+//	public static void main(String[] args) throws IOException {
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//	    
+//	    String[] line = br.readLine().split(" ");
+//	    
+//	    int n = Integer.parseInt(line[0]);
+//	    int kim = Integer.parseInt(line[1]);
+//	    int im = Integer.parseInt(line[2]);
+//	    
+//	    int round = 0;
+//	    
+//	    while(kim != im) {
+//	        kim = (kim + 1) /2;
+//	        im = (im + 1) /2;
+//	        round++;
+//	    }
+//	    bw.write(round+"");
+//	    
+//	    bw.flush();
+//	    bw.close();
+//	    br.close();
+//	}
+	
+//	public static void main(String[] args) throws IOException {
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		String[] str = br.readLine().split("");
+//		
+//		int[] alpabet = new int[26];
+//		Arrays.fill(alpabet, -1);
+//		
+//		for(int i=0; i<str.length; i++) {
+//			char s = str[i].charAt(0);
+//			int num = s-'a';
+//			
+//			if(alpabet[num] == -1) alpabet[num] = i;
+//		}
+//		
+//		for(int i=0; i<alpabet.length; i++) {
+//			bw.write(alpabet[i]+" ");
+//		}
+//		
+//		bw.flush();
+//		bw.close();
+//		br.close();
+//	}
+	
+//	public static void main(String[] args) throws IOException {
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		int num = Integer.parseInt(br.readLine());
+//		
+//		for(int i=0; i<num; i++) {
+//			String result = "";
+//			String[] line = br.readLine().split(" ");
+//			
+//			int n = Integer.parseInt(line[0]);
+//			String[] alpha = line[1].split("");
+//			
+//			for(int j=0; j<alpha.length; j++) {
+//				result += alpha[j].repeat(n);
+//			}
+//			
+//			bw.write(result+"\n");
+//		}
+//		
+//		bw.flush();
+//		bw.close();
+//		br.close();
+//	}
+	
+	public static String reverse(String str) {
+		StringBuffer sb = new StringBuffer(str);
+		String reversedStr = sb.reverse().toString();
+		
+		return reversedStr;
+	}
+	
+//	public static void main(String[] args) throws IOException {
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		String[] numbers = br.readLine().split(" ");
+//		
+//		int a = Integer.parseInt(reverse(numbers[0]));
+//		int b = Integer.parseInt(reverse(numbers[1]));
+//		
+//		if(a>b) bw.write(a+"");
+//		if(b>a) bw.write(b+"");
+//		
+//		bw.flush();
+//		bw.close();
+//		br.close();
+//	}
+	
+//	public static void main(String[] args) throws IOException {
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		String alpha = br.readLine();
+//		int result = 0;
+//		
+//		for(int i=0; i<alpha.length(); i++) {
+//			char a = alpha.charAt(i);
+//            
+//            if ('A' <= a && a <= 'C') {
+//                result += 3;
+//            } else if ('D' <= a && a <= 'F') {
+//                result += 4;
+//            } else if ('G' <= a && a <= 'I') {
+//                result += 5;
+//            } else if ('J' <= a && a <= 'L') {
+//                result += 6;
+//            } else if ('M' <= a && a <= 'O') {
+//                result += 7;
+//            } else if ('P' <= a && a <= 'S') {
+//                result += 8;
+//            } else if ('T' <= a && a <= 'V') {
+//                result += 9;
+//            } else if ('W' <= a && a <= 'Z') {
+//                result += 10;
+//            }
+//		}
+//		bw.write(result+"");
+//		
+//		bw.flush();
+//		bw.close();
+//		br.close();
+//	}
+	
+	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-	    
-	    String[] line = br.readLine().split(" ");
-	    
-	    int n = Integer.parseInt(line[0]);
-	    int kim = Integer.parseInt(line[1]);
-	    int im = Integer.parseInt(line[2]);
-	    
-	    int round = 0;
-	    
-	    while(kim != im) {
-	        kim = (kim + 1) /2;
-	        im = (im + 1) /2;
-	        round++;
-	    }
-	    bw.write(round+"");
-	    
-	    bw.flush();
-	    bw.close();
-	    br.close();
+		
+		String str;
+		while((str=br.readLine()) != null && !str.isEmpty()) {
+			bw.write(str+"\n");
+		}
+		bw.flush();
+		bw.close();
+		br.close();
 	}
 }
