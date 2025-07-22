@@ -518,14 +518,91 @@ public class test {
 //		br.close();
 //	}
 	
-	public static void main(String[] args) throws IOException{
+//	public static void main(String[] args) throws IOException{
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		String str;
+//		while((str=br.readLine()) != null && !str.isEmpty()) {
+//			bw.write(str+"\n");
+//		}
+//		bw.flush();
+//		bw.close();
+//		br.close();
+//	}
+	
+//	public static void main(String[] args) throws IOException{
+//		int[] origin = {1, 1, 2, 2, 2, 8};
+//		String result = "";
+//		
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		String[] line = br.readLine().split(" ");
+//		
+//		for(int i=0; i<line.length; i++) {
+//			int num = Integer.parseInt(line[i]);
+//			
+//			result += (origin[i]-num)+" ";
+//		}
+//		
+//		bw.write(result);
+//		bw.flush();
+//		bw.close();
+//		br.close();
+//	}
+	
+//	public static void main(String[] args) throws IOException {
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		String str = br.readLine();
+//		
+//		String reversed = new StringBuffer(str).reverse().toString();
+//		
+//		if(str.equals(reversed)) {
+//			bw.write("1");
+//		}else {
+//			bw.write("0");
+//		}
+//		
+//		bw.flush();
+//		bw.close();
+//		br.close();
+//	}
+	
+	public static boolean groupWord(String str) {
+		boolean[] alpha = new boolean[26];
+		
+		char prev = '\0';
+		
+		for(char c : str.toCharArray()) {
+			if(c!=prev) {
+				if(alpha[c-'a']) {
+					return false;
+				}
+				alpha[c-'a'] = true;
+			}
+			prev = c;
+		}
+		return true;
+	}
+	
+	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		String str;
-		while((str=br.readLine()) != null && !str.isEmpty()) {
-			bw.write(str+"\n");
+		int num = Integer.parseInt(br.readLine());
+		int count = 0;
+		
+		for(int i=0; i<num; i++) {
+			String str = br.readLine();
+			if(groupWord(str)) {
+				count++;
+			}
 		}
+		bw.write(count+"");
+		
 		bw.flush();
 		bw.close();
 		br.close();
