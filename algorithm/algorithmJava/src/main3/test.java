@@ -588,20 +588,113 @@ public class test {
 		return true;
 	}
 	
+//	public static void main(String[] args) throws IOException {
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		int num = Integer.parseInt(br.readLine());
+//		int count = 0;
+//		
+//		for(int i=0; i<num; i++) {
+//			String str = br.readLine();
+//			if(groupWord(str)) {
+//				count++;
+//			}
+//		}
+//		bw.write(count+"");
+//		
+//		bw.flush();
+//		bw.close();
+//		br.close();
+//	}
+//	public static void main(String[] args) throws IOException {
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		String[][] arr = new String[9][9];
+//		int max = 0;
+//		int maxRow=0; 
+//		int maxCol = 0;
+//		
+//		//채우기
+//		for(int i=0; i<9; i++) {
+//			arr[i] = br.readLine().split(" ");
+//		}
+//		
+//		for(int row=0; row<9; row++) {
+//			for(int col=0; col<9; col++) {
+//				if(max < Integer.parseInt(arr[row][col])) {
+//					max = Integer.parseInt(arr[row][col]);
+//					maxRow = row+1;
+//					maxCol = col+1;
+//				}
+//			}
+//		}
+//		
+//		bw.write(max+"\n"+maxRow+" "+maxCol);
+//		
+//		bw.flush();
+//		bw.close();
+//		br.close();
+//	}
+	
+//	public static void main(String[] args) throws IOException {
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		String[] line = br.readLine().split(" ");
+//		int n = Integer.parseInt(line[0]);
+//		int m = Integer.parseInt(line[1]);
+//		
+//		String[][] a = new String[n][m];
+//		String[][] b = new String[n][m];
+//		
+//		//채우기
+//		for(int i=0; i<n; i++) {
+//			a[i] = br.readLine().split(" ");
+//		}
+//		for(int i=0; i<n; i++) {
+//			b[i] = br.readLine().split(" ");
+//		}
+//		
+//		//찍기
+//		for(int i=0; i<n; i++) {
+//			for(int j=0; j<m; j++) {
+//				int num_a = Integer.parseInt(a[i][j]);
+//				int num_b = Integer.parseInt(b[i][j]);
+//				
+//				bw.write(String.valueOf(num_a + num_b) + " ");
+//			}
+//			bw.newLine();
+//		}
+//		bw.flush();
+//		
+//		bw.close();
+//		br.close();
+//	}
+	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		int num = Integer.parseInt(br.readLine());
-		int count = 0;
+		String[] arr = new String[5];
+		int maxLen = 0;
+		String result ="";
 		
-		for(int i=0; i<num; i++) {
-			String str = br.readLine();
-			if(groupWord(str)) {
-				count++;
-			}
+		for(int i=0; i<5; i++) {
+			arr[i] = br.readLine();
+			maxLen = Math.max(maxLen, arr[i].length());
 		}
-		bw.write(count+"");
+		
+		for (int i = 0; i < maxLen; i++) {
+		    for (int j = 0; j < 5; j++) {
+		        if (arr[j].length() > i) {
+		            result+= arr[j].charAt(i);
+		        }
+		    }
+		}
+		
+		bw.write(result);
 		
 		bw.flush();
 		bw.close();
