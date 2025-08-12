@@ -5,7 +5,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.StringTokenizer;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class test {
@@ -673,31 +674,106 @@ public class test {
 //		br.close();
 //	}
 	
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//	public static void main(String[] args) throws IOException {
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		String[] arr = new String[5];
+//		int maxLen = 0;
+//		String result ="";
+//		
+//		for(int i=0; i<5; i++) {
+//			arr[i] = br.readLine();
+//			maxLen = Math.max(maxLen, arr[i].length());
+//		}
+//		
+//		for (int i = 0; i < maxLen; i++) {
+//		    for (int j = 0; j < 5; j++) {
+//		        if (arr[j].length() > i) {
+//		            result+= arr[j].charAt(i);
+//		        }
+//		    }
+//		}
+//		
+//		bw.write(result);
+//		
+//		bw.flush();
+//		bw.close();
+//		br.close();
+//	}
+	
+//	public static void main(String[] args) throws IOException {
+//		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+//		
+//		String str = br.readLine().toUpperCase();
+//		int[] arr = new int[26];
+//		
+//		for(int i=0; i<str.length(); i++) {
+//			int convert = str.charAt(i);
+//			if(convert >= 'A' && convert <= 'Z') {
+//				arr[convert-'A']++;
+//			}
+//		}
+//		
+//		int max = -1;
+//		int idx = -1;
+//		boolean isDuplicate = false;
+//		
+//		for(int i=0; i<arr.length; i++) {
+//			if(arr[i] > max) {
+//				max = arr[i];
+//				idx = i;
+//				isDuplicate = false;
+//			}else if(arr[i] == max && max != 0) {
+//				isDuplicate = true;
+//			}
+//		}
+//
+//		if(isDuplicate) {
+//			System.out.println("?");
+//		}else {
+//			System.out.println((char)(idx+'A'));
+//		}
+//	}
+	public static double convertScore(String level) {
+		double num=0;
 		
-		String[] arr = new String[5];
-		int maxLen = 0;
-		String result ="";
-		
-		for(int i=0; i<5; i++) {
-			arr[i] = br.readLine();
-			maxLen = Math.max(maxLen, arr[i].length());
+		switch(level) {
+			case "A+": num=4.5; break;
+			case "A0": num=4.0; break;
+			case "B+": num=3.5; break;
+			case "B0": num=3.0; break;
+			case "C+": num=2.5; break;
+			case "C0": num=2.0; break;
+			case "D+": num=1.5; break;
+			case "D0": num=1.0; break;			
+			case "F": num=0.0; break;
+			default: num=-1;
 		}
-		
-		for (int i = 0; i < maxLen; i++) {
-		    for (int j = 0; j < 5; j++) {
-		        if (arr[j].length() > i) {
-		            result+= arr[j].charAt(i);
-		        }
-		    }
-		}
-		
-		bw.write(result);
-		
-		bw.flush();
-		bw.close();
-		br.close();
+		return num;
 	}
+	
+	public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String line;
+
+        double sumScore = 0.0;
+        double totalCredit = 0.0;
+
+        while ((line = br.readLine()) != null && !line.isEmpty()) {
+            String[] tokens = line.split(" ");
+            String subject = tokens[0];
+            double credit = Double.parseDouble(tokens[1]);
+            String grade = tokens[2];
+
+            if (!grade.equals("P")) {
+                double score = convertScore(grade);
+                totalCredit += credit;
+                sumScore += credit * score;
+            }
+        }
+
+        System.out.printf("%.6f\n", sumScore / totalCredit);
+    }
 }
