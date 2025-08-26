@@ -754,26 +754,26 @@ public class test {
 		return num;
 	}
 	
-	public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String line;
-
-        double sumScore = 0.0;
-        double totalCredit = 0.0;
-
-        while ((line = br.readLine()) != null && !line.isEmpty()) {
-            String[] tokens = line.split(" ");
-            String subject = tokens[0];
-            double credit = Double.parseDouble(tokens[1]);
-            String grade = tokens[2];
-
-            if (!grade.equals("P")) {
-                double score = convertScore(grade);
-                totalCredit += credit;
-                sumScore += credit * score;
-            }
-        }
-
-        System.out.printf("%.6f\n", sumScore / totalCredit);
-    }
+//	public static void main(String[] args) throws IOException {
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        String line;
+//
+//        double sumScore = 0.0;
+//        double totalCredit = 0.0;
+//
+//        while ((line = br.readLine()) != null && !line.isEmpty()) {
+//            String[] tokens = line.split(" ");
+//            String subject = tokens[0];
+//            double credit = Double.parseDouble(tokens[1]);
+//            String grade = tokens[2];
+//
+//            if (!grade.equals("P")) {
+//                double score = convertScore(grade);
+//                totalCredit += credit;
+//                sumScore += credit * score;
+//            }
+//        }
+//
+//        System.out.printf("%.6f\n", sumScore / totalCredit);
+//    }
 }
