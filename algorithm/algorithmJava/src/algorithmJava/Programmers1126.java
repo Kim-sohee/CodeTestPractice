@@ -2,6 +2,8 @@ package algorithmJava;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*프로그래머스 lv.0*/
 public class Programmers1126 {
@@ -18,6 +20,7 @@ public class Programmers1126 {
 		}
 		return answer;
 	}
+
 	
 	/*[문제] 소인수분해
 	 * 소인수분해란 어떤 수를 소수들의 곱으로 표현하는 것입니다. 
@@ -66,6 +69,25 @@ public class Programmers1126 {
 	    return answer.stream().distinct().mapToInt(i -> i).toArray();
 	}
 	
+	
+	/*[문제] 숨어있는 숫자의 덧셈(2)
+	 * 문자열 my_string이 매개변수로 주어집니다. my_string은 소문자, 대문자, 자연수로만 구성되어있습니다. 
+	 * my_string안의 자연수들의 합을 return하도록 solution 함수를 완성해주세요.
+	 * */
+	public static int solution03(String my_string) {
+		int answer=0;
+		
+		Pattern p = Pattern.compile("\\d+");
+		Matcher m = p.matcher(my_string);
+		
+		while(m.find()) {
+			answer += Integer.parseInt(m.group());
+		}
+		
+		return answer;
+	}
+
+	
 	public static void main(String[] args) {
 		//Code 1
 		String my_string = "aAb1B2cC34oOp";
@@ -74,5 +96,9 @@ public class Programmers1126 {
 		
 		//Code 2
 		System.out.println(solution02(20));
+		
+		
+		//Code 3
+		System.out.println(solution03(my_string));
 	}
 }
